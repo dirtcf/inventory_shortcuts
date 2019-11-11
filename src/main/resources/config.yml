@@ -1,0 +1,13 @@
+material_groups:
+  - - APPLE
+    - PORKCHOP
+  - - ANDESITE
+    - COBBLESTONE
+
+inventory_types:
+  - PLAYER
+  - CHEST
+  - BARREL
+  - ENDER_CHEST
+  - HOPPER
+  - SHULKER_BOX
