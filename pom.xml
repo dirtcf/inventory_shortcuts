@@ -7,11 +7,11 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <spigot-api.version>1.14.4-R0.1-SNAPSHOT</spigot-api.version>
-        <plugin.version>1.0.0</plugin.version>
+        <plugin.version>1.0.1</plugin.version>
     </properties>
 
-    <groupId>cf.dirt.inventorysort</groupId>
-    <artifactId>inventory-sort</artifactId>
+    <groupId>cf.dirt.inventorygroup</groupId>
+    <artifactId>inventory_group</artifactId>
     <version>${spigot-api.version}-${plugin.version}</version>
 
     <repositories>

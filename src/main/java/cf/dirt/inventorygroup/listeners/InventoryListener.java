@@ -1,6 +1,6 @@
-package cf.dirt.inventorysort.listeners;
+package cf.dirt.inventorygroup.listeners;
 
-import cf.dirt.inventorysort.inventory.InventorySorter;
+import cf.dirt.inventorygroup.inventory.InventoryGrouper;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -14,9 +14,9 @@ import org.bukkit.inventory.InventoryView;
 
 public final class InventoryListener implements Listener {
 
-    private final InventorySorter sorter;
+    private final InventoryGrouper sorter;
 
-    public InventoryListener(InventorySorter sorter) {
+    public InventoryListener(InventoryGrouper sorter) {
         this.sorter = sorter;
     }
 

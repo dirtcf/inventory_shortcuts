@@ -1,4 +1,4 @@
-package cf.dirt.inventorysort.inventory;
+package cf.dirt.inventorygroup.inventory;
 
 import org.bukkit.Material;
 import org.bukkit.event.inventory.InventoryType;
@@ -7,14 +7,14 @@ import org.bukkit.inventory.ItemStack;
 
 import java.util.*;
 
-public class InventorySorter {
+public class InventoryGrouper {
 
     private final Comparator<Material> materialComparator;
     private final Set<InventoryType> inventoryTypes;
 
-    public InventorySorter(List<List<Material>> materialGroups, Set<InventoryType> inventoryTypes) {
-        this.materialComparator = new GroupingComparator<>(materialGroups);
-        this.inventoryTypes = inventoryTypes;
+    public InventoryGrouper(List<List<Material>> materialGroups, List<InventoryType> inventoryTypes) {
+        this.materialComparator = new GroupingComparator<>(Material.class, materialGroups);
+        this.inventoryTypes = new HashSet<>(inventoryTypes);
     }
 
     public boolean isSupported(InventoryType type) {
@@ -33,20 +33,23 @@ public class InventorySorter {
 
     public void sortItems(Inventory inventory) {
         ItemStack[] stacks = inventory.getStorageContents();
-        sortItems(inventory, stacks, inventory.getType() != InventoryType.PLAYER ? 0 : 9); // shift for player inventory
+        sortItems(inventory, stacks,
+                inventory.getType() != InventoryType.PLAYER ? 0 : 9,
+                Math.min(inventory.getSize(), 36)
+        );
     }
 
-    private void sortItems(Inventory inventory, ItemStack[] stacks, int shift) {
-        Map.Entry<Material, Stack<ItemStack>>[] sortedGroups = sortGroups(groupStacks(stacks, shift));
+    private void sortItems(Inventory inventory, ItemStack[] stacks, int start, int stop) {
+        Map.Entry<Material, Stack<ItemStack>>[] sortedGroups = sortGroups(groupStacks(stacks, start));
 
         for (Map.Entry<Material, Stack<ItemStack>> sortedGroup : sortedGroups) {
             for (ItemStack stack : sortedGroup.getValue()) {
-                inventory.setItem(shift++, stack);
+                inventory.setItem(start++, stack);
             }
         }
 
-        for (int i = shift; i < inventory.getSize() && i < 36; i++) { // cap for player inventory
-            inventory.setItem(i, null);
+        while (start < stop) {
+            inventory.setItem(start++, null);
         }
     }
 
@@ -65,10 +68,10 @@ public class InventorySorter {
         }
     }
 
-    private static Map<Material, Stack<ItemStack>> groupStacks(ItemStack[] stacks, final int shift) {
+    private static Map<Material, Stack<ItemStack>> groupStacks(ItemStack[] stacks, final int start) {
         Map<Material, Stack<ItemStack>> groupedStacks = new HashMap<>();
 
-        for (int i = shift; i < stacks.length; i++) {
+        for (int i = start; i < stacks.length; i++) {
             ItemStack currentStack = stacks[i];
 
             if (currentStack != null) {

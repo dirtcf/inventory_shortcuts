@@ -1,13 +1,13 @@
-package cf.dirt.inventorysort.inventory;
+package cf.dirt.inventorygroup.inventory;
 
 import java.util.*;
 
-public class GroupingComparator<T> implements Comparator<T> {
+public class GroupingComparator<T extends Enum<T>> implements Comparator<T> {
 
     private final Map<T, Integer> groups;
 
-    public GroupingComparator(List<? extends Iterable<T>> groups) {
-        this.groups = new HashMap<>();
+    public GroupingComparator(Class<T> clazz, List<? extends Iterable<T>> groups) {
+        this.groups = new EnumMap<>(clazz); // for lookup performance
         for (int i = 0; i < groups.size(); i++) {
             for (T key : groups.get(i)) {
                 this.groups.put(key, groups.size() - i); // we want groups to be first
@@ -16,8 +16,8 @@ public class GroupingComparator<T> implements Comparator<T> {
     }
 
     @SafeVarargs
-    public GroupingComparator(Iterable<T>... groups) {
-        this(List.of(groups));
+    public GroupingComparator(Class<T> clazz, Iterable<T>... groups) {
+        this(clazz, List.of(groups));
     }
 
     @Override
