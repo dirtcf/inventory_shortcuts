@@ -1,3 +1,11 @@
+inventory_types:
+  - PLAYER
+  - CHEST
+  - BARREL
+  - ENDER_CHEST
+  - HOPPER
+  - SHULKER_BOX
+
 material_groups:
   - - OAK_LOG
     - SPRUCE_LOG
@@ -26,6 +34,20 @@ material_groups:
     - JUNGLE_PLANKS
     - ACACIA_PLANKS
     - DARK_OAK_PLANKS
+
+  - - OAK_SLAB
+    - SPRUCE_SLAB
+    - BIRCH_SLAB
+    - JUNGLE_SLAB
+    - ACACIA_SLAB
+    - DARK_OAK_SLAB
+
+  - - OAK_STAIRS
+    - SPRUCE_STAIRS
+    - BIRCH_STAIRS
+    - JUNGLE_STAIRS
+    - ACACIA_STAIRS
+    - DARK_OAK_STAIRS
 
   - - OAK_FENCE
     - SPRUCE_FENCE
@@ -282,6 +304,63 @@ material_groups:
     - RED_WOOL
     - BLACK_WOOL
 
+  - - COOKED_PORKCHOP
+  - - PORKCHOP
+
+  - - COOKED_BEEF
+  - - BEEF
+
+  - - COOKED_MUTTON
+  - - MUTTON
+
+  - - COOKED_CHICKEN
+  - - CHICKEN
+
+  - - COOKED_RABBIT
+  - - RABBIT
+
+  - - COOKED_COD
+  - - COD
+
+  - - COOKED_SALMON
+  - - SALMON
+
+  - - TROPICAL_FISH
+
+  - - MELON_SLICE
+  - - MELON
+  - - MELON_SEEDS
+
+  - - PUMPKIN_PIE
+  - - PUMPKIN
+  - - CARVED_PUMPKIN
+    - JACK_O_LANTERN
+  - - PUMPKIN_SEEDS
+
+  - - BREAD
+  - - WHEAT
+  - - WHEAT_SEEDS
+
+  - - BAKED_POTATO
+  - - POTATO
+  - - POISONOUS_POTATO
+
+  - - BEETROOT
+  - - BEETROOT_SEEDS
+  - - BEETROOT_SOUP
+
+  - - CAKE
+  - - COOKIE
+    - COCOA_BEANS
+
+  - - CARROT
+    - SWEET_BERRIES
+    - RABBIT_STEW
+
+  - - MUSHROOM_STEW
+    - RED_MUSHROOM
+    - BROWN_MUSHROOM
+
   - - DIAMOND_ORE
     - GOLD_ORE
     - IRON_ORE
@@ -321,10 +400,6 @@ material_groups:
   - - SNOW_BLOCK
     - SNOW
     - SNOWBALL
-
-  - - BROWN_MUSHROOM_BLOCK
-    - RED_MUSHROOM_BLOCK
-    - MUSHROOM_STEM
 
   - - DANDELION
     - SUNFLOWER
@@ -368,6 +443,10 @@ material_groups:
   - - VINE
     - LILY_PAD
   - - COBWEB
+
+  - - BROWN_MUSHROOM_BLOCK
+    - RED_MUSHROOM_BLOCK
+    - MUSHROOM_STEM
 
   - - WHITE_CARPET
     - ORANGE_CARPET
@@ -454,6 +533,8 @@ material_groups:
     - SKULL_BANNER_PATTERN
     - GLOBE_BANNER_PATTERN
 
+  - - LADDER
+
   - - IRON_DOOR
   - - OAK_DOOR
     - SPRUCE_DOOR
@@ -461,6 +542,21 @@ material_groups:
     - JUNGLE_DOOR
     - ACACIA_DOOR
     - DARK_OAK_DOOR
+
+  - - OAK_FENCE_GATE
+    - SPRUCE_FENCE_GATE
+    - BIRCH_FENCE_GATE
+    - JUNGLE_FENCE_GATE
+    - ACACIA_FENCE_GATE
+    - DARK_OAK_FENCE_GATE
+
+  - - IRON_TRAPDOOR
+  - - OAK_TRAPDOOR
+    - SPRUCE_TRAPDOOR
+    - BIRCH_TRAPDOOR
+    - JUNGLE_TRAPDOOR
+    - ACACIA_TRAPDOOR
+    - DARK_OAK_TRAPDOOR
 
   - - STONE_PRESSURE_PLATE
     - HEAVY_WEIGHTED_PRESSURE_PLATE
@@ -472,21 +568,6 @@ material_groups:
     - JUNGLE_PRESSURE_PLATE
     - ACACIA_PRESSURE_PLATE
     - DARK_OAK_PRESSURE_PLATE
-
-  - - IRON_TRAPDOOR
-  - - OAK_TRAPDOOR
-    - SPRUCE_TRAPDOOR
-    - BIRCH_TRAPDOOR
-    - JUNGLE_TRAPDOOR
-    - ACACIA_TRAPDOOR
-    - DARK_OAK_TRAPDOOR
-
-  - - OAK_FENCE_GATE
-    - SPRUCE_FENCE_GATE
-    - BIRCH_FENCE_GATE
-    - JUNGLE_FENCE_GATE
-    - ACACIA_FENCE_GATE
-    - DARK_OAK_FENCE_GATE
 
   - - STONE_BUTTON
   - - OAK_BUTTON
@@ -553,6 +634,8 @@ material_groups:
     - COMPOSTER
 
   - - ENCHANTING_TABLE
+  - - BOOK
+    - BOOKSHELF
 
   - - BREWING_STAND
     - CAULDRON
@@ -570,12 +653,10 @@ material_groups:
     - FLOWER_POT
     - ITEM_FRAME
     - PAINTING
+    - IRON_BARS
 
   - - JUKEBOX
     - NOTE_BLOCK
-
-  - - IRON_BARS
-    - LADDER
 
   - - PRISMARINE_CRYSTALS
   - - PRISMARINE_SHARD
@@ -624,7 +705,8 @@ material_groups:
 
   - - SEAGRASS
     - SEA_PICKLE
-    - KELP
+  - - KELP
+    - KELP_BLOCK
 
   - - CONDUIT
     - NAUTILUS_SHELL
@@ -726,62 +808,8 @@ material_groups:
     - RED_SHULKER_BOX
     - BLACK_SHULKER_BOX
 
-  - - COOKED_PORKCHOP
-  - - PORKCHOP
-
-  - - COOKED_BEEF
-  - - BEEF
-
-  - - COOKED_MUTTON
-  - - MUTTON
-
-  - - COOKED_CHICKEN
-  - - CHICKEN
-
-  - - COOKED_RABBIT
-  - - RABBIT
-
-  - - COOKED_COD
-  - - COD
-
-  - - COOKED_SALMON
-  - - SALMON
-
-  - - TROPICAL_FISH
-
-  - - MELON_SLICE
-  - - MELON
-  - - MELON_SEEDS
-
-  - - PUMPKIN_PIE
-  - - PUMPKIN
-  - - CARVED_PUMPKIN
-    - JACK_O_LANTERN
-  - - PUMPKIN_SEEDS
-
-  - - BREAD
-  - - WHEAT
-  - - WHEAT_SEEDS
-
-  - - BAKED_POTATO
-  - - POTATO
-  - - POISONOUS_POTATO
-
-  - - BEETROOT
-  - - BEETROOT_SEEDS
-  - - BEETROOT_SOUP
-
-  - - CAKE
-  - - COOKIE
-    - COCOA_BEANS
-
-  - - CARROT
-    - SWEET_BERRIES
-    - RABBIT_STEW
-
-  - - MUSHROOM_STEW
-    - RED_MUSHROOM
-    - BROWN_MUSHROOM
+  - - FLINT
+    - STICK
 
   - - BAMBOO
   - - CACTUS
@@ -796,10 +824,9 @@ material_groups:
   - - RABBIT_HIDE
     - RABBIT_FOOT
   - - PHANTOM_MEMBRANE
+  - - PUFFERFISH
 
-  - - BOOK
-    - BOOKSHELF
-
+  - - ROTTEN_FLESH
   - - STRING
     - SPIDER_EYE
     - FERMENTED_SPIDER_EYE
@@ -931,11 +958,3 @@ material_groups:
     - MUSIC_DISC_STRAD
     - MUSIC_DISC_WARD
     - MUSIC_DISC_WAIT
-
-inventory_types:
-  - PLAYER
-  - CHEST
-  - BARREL
-  - ENDER_CHEST
-  - HOPPER
-  - SHULKER_BOX
