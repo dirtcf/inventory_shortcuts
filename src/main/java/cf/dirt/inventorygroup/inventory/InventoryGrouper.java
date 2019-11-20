@@ -14,7 +14,7 @@ public class InventoryGrouper {
 
     public InventoryGrouper(List<List<Material>> materialGroups, List<InventoryType> inventoryTypes) {
         this.materialComparator = new GroupingComparator<>(Material.class, materialGroups);
-        this.inventoryTypes = new HashSet<>(inventoryTypes);
+        this.inventoryTypes = EnumSet.copyOf(inventoryTypes);
     }
 
     public boolean isSupported(InventoryType type) {
@@ -33,14 +33,20 @@ public class InventoryGrouper {
 
     public void sortItems(Inventory inventory) {
         ItemStack[] stacks = inventory.getStorageContents();
-        sortItems(inventory, stacks,
-                inventory.getType() != InventoryType.PLAYER ? 0 : 9,
-                Math.min(inventory.getSize(), 36)
-        );
+
+        int start, stop;
+
+        if (inventory.getType() == InventoryType.PLAYER) {
+            start = 9; stop = 36;
+        } else {
+            start = 0; stop = inventory.getSize();
+        }
+
+        sortItems(inventory, stacks, start, stop);
     }
 
-    private void sortItems(Inventory inventory, ItemStack[] stacks, int start, int stop) {
-        Map.Entry<Material, Stack<ItemStack>>[] sortedGroups = sortGroups(groupStacks(stacks, start));
+    private void sortItems(Inventory inventory, ItemStack[] stacks, int start, final int stop) {
+        Map.Entry<Material, Stack<ItemStack>>[] sortedGroups = sortGroups(groupStacks(stacks, start, stop));
 
         for (Map.Entry<Material, Stack<ItemStack>> sortedGroup : sortedGroups) {
             for (ItemStack stack : sortedGroup.getValue()) {
@@ -68,11 +74,11 @@ public class InventoryGrouper {
         }
     }
 
-    private static Map<Material, Stack<ItemStack>> groupStacks(ItemStack[] stacks, final int start) {
-        Map<Material, Stack<ItemStack>> groupedStacks = new HashMap<>();
+    private static Map<Material, Stack<ItemStack>> groupStacks(ItemStack[] stacks, int start, final int stop) {
+        Map<Material, Stack<ItemStack>> groupedStacks = new LinkedHashMap<>();
 
-        for (int i = start; i < stacks.length; i++) {
-            ItemStack currentStack = stacks[i];
+        while (start < stop) {
+            ItemStack currentStack = stacks[start++];
 
             if (currentStack != null) {
                 Material currentType = currentStack.getType();

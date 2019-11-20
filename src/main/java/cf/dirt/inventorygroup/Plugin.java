@@ -20,6 +20,25 @@ public final class Plugin extends JavaPlugin {
         saveDefaultConfig();
 
         try {
+            List<InventoryType> inventoryTypes = new LinkedList<>();
+
+            for (String typeString : (List<String>) getConfig().get("inventory_types")) {
+                try {
+                    InventoryType type = InventoryType.valueOf(typeString);
+                    inventoryTypes.add(type);
+                }
+                catch (IllegalArgumentException exception) {
+                    getLogger().warning(String.format(
+                            "Skipping inventory type: %s, not found", typeString
+                    ));
+                }
+            }
+
+            getLogger().info(String.format(
+                    "Loaded %d inventory types: %s",
+                    inventoryTypes.size(), inventoryTypes
+            ));
+
             List<List<Material>> materialGroups = new LinkedList<>();
 
             for (List<String> groupStrings : (List<List<String>>) getConfig().get("material_groups")) {
@@ -43,25 +62,6 @@ public final class Plugin extends JavaPlugin {
             getLogger().info(String.format(
                     "Loaded %d material groups: %s",
                     materialGroups.size(), materialGroups
-            ));
-
-            List<InventoryType> inventoryTypes = new LinkedList<>();
-
-            for (String typeString : (List<String>) getConfig().get("inventory_types")) {
-                try {
-                    InventoryType type = InventoryType.valueOf(typeString);
-                    inventoryTypes.add(type);
-                }
-                catch (IllegalArgumentException exception) {
-                    getLogger().warning(String.format(
-                            "Skipping inventory type: %s, not found", typeString
-                    ));
-                }
-            }
-
-            getLogger().info(String.format(
-                    "Loaded %d inventory types: %s",
-                    inventoryTypes.size(), inventoryTypes
             ));
 
             Bukkit.getPluginManager().registerEvents(new InventoryListener(
