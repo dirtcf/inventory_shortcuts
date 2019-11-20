@@ -1,6 +1,6 @@
-main: cf.dirt.inventorysort.Plugin
-name: InventorySort
-version: 1.0.0
+main: cf.dirt.inventorygroup.Plugin
+name: InventoryGroup
+version: 1.0.4
 api-version: 1.14
-description: Sort and transfer items with mouse scroll
+description: Group, sort and transfer items with mouse scroll
 author: kubachrabanski
